@@ -136,7 +136,6 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
         triggers[targetIndex].focus()
         
         // Auto-activate if activation mode is automatic
-        const { activationMode } = useTabs()
         if (activationMode === 'automatic') {
           triggers[targetIndex].click()
         }
@@ -149,6 +148,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
         role="tablist"
         aria-orientation={orientation}
         onKeyDown={handleKeyDown}
+        tabIndex={0}
         className={cn(
           'tabs-list inline-flex items-center',
           orientation === 'horizontal' 

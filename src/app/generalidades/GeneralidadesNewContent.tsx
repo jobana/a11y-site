@@ -121,8 +121,8 @@ export function GeneralidadesNewContent() {
         <div className="mb-6">
           <p className="text-lg text-gray-900 leading-relaxed">
             Para diseñar productos digitales inclusivos, es fundamental comprender que la discapacidad no es un problema 
-            de la persona, sino el resultado de la interacción con un entorno que presenta barreras. El objetivo de la 
-            accesibilidad no es "reparar" al usuario, sino eliminar esas barreras digitales.
+            de la persona, sino el resultado de la interacción con un entorno que presenta barreras.             El objetivo de la 
+            accesibilidad no es &quot;reparar&quot; al usuario, sino eliminar esas barreras digitales.
           </p>
           <p className="text-gray-80 mt-4">
             Adoptando un enfoque centrado en la persona, describimos los principales tipos de discapacidad a considerar 

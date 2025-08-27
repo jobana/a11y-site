@@ -213,8 +213,8 @@ export function PlaneacionNewContent() {
             
             <div className="bg-primary-10 border border-primary-30 rounded-lg p-6 mb-6">
               <blockquote className="text-primary-80 font-medium text-lg italic text-center">
-                "El producto deberá cumplir con el Nivel AA de las Pautas de Accesibilidad 
-                para el Contenido Web (WCAG) 2.1 (o la versión más reciente)."
+                &quot;El producto deberá cumplir con el Nivel AA de las Pautas de Accesibilidad 
+                para el Contenido Web (WCAG) 2.1 (o la versión más reciente).&quot;
               </blockquote>
             </div>
             
@@ -241,8 +241,8 @@ export function PlaneacionNewContent() {
         
         <div className="bg-tertiary-10 border border-tertiary-20 rounded-lg p-4 mb-8">
           <p className="text-gray-900 font-medium text-sm">
-            <strong>Formato:</strong> "Como &lt;tipo de usuario&gt;, quiero &lt;realizar una acción&gt; 
-            para &lt;obtener un beneficio&gt;".
+            <strong>Formato:</strong> &quot;Como &lt;tipo de usuario&gt;, quiero &lt;realizar una acción&gt; 
+            para &lt;obtener un beneficio&gt;&quot;.
           </p>
         </div>
 
@@ -259,7 +259,7 @@ export function PlaneacionNewContent() {
                 <div className="space-y-4 pt-4">
                   <div className="bg-primary-10 border border-primary-20 rounded-lg p-4">
                     <h4 className="font-semibold text-primary-90 mb-2">Historia de Usuario:</h4>
-                    <p className="text-primary-80 italic">"{historia.historia}"</p>
+                    <p className="text-primary-80 italic">&quot;{historia.historia}&quot;</p>
                   </div>
                   <div>
                     <h4 className="font-semibold text-gray-800 mb-2">Contexto Técnico:</h4>

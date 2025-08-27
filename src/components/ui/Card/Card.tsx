@@ -50,7 +50,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
           ref={ref as any}
           onClick={onClick}
           className={cn(baseClasses, 'w-full text-left focus:outline-none flex flex-col justify-between')}
-          {...props}
+          {...(props as any)}
         >
           {children}
         </button>

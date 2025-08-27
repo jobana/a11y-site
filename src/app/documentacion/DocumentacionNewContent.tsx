@@ -804,9 +804,9 @@ export function DocumentacionNewContent() {
                         <ol className="list-decimal list-inside space-y-2 text-sm text-gray-900">
                           <li>El usuario navega a una página con instrucciones, opciones o información.</li>
                           <li>El sistema presenta el contenido combinando texto con apoyos visuales.</li>
-                          <li>Junto a una acción importante (ej. texto "Guardar cambios"), el sistema muestra un ícono universalmente reconocible (ej. un disquete o una marca de verificación).</li>
-                          <li>Para explicar un concepto (ej. "Configuración de privacidad"), el sistema utiliza una imagen o pictograma simple (ej. un escudo o un candado).</li>
-                          <li>Los botones para acciones críticas no solo tienen texto claro, sino que también se apoyan en color e íconos para reforzar el significado (ej. "Confirmar" con un ícono verde, "Eliminar" con un ícono rojo).</li>
+                          <li>Junto a una acción importante (ej. texto &quot;Guardar cambios&quot;), el sistema muestra un ícono universalmente reconocible (ej. un disquete o una marca de verificación).</li>
+                          <li>Para explicar un concepto (ej. &quot;Configuración de privacidad&quot;), el sistema utiliza una imagen o pictograma simple (ej. un escudo o un candado).</li>
+                          <li>Los botones para acciones críticas no solo tienen texto claro, sino que también se apoyan en color e íconos para reforzar el significado (ej. &quot;Confirmar&quot; con un ícono verde, &quot;Eliminar&quot; con un ícono rojo).</li>
                           <li>El usuario asocia el texto con la imagen, lo que le permite comprender la función o el concepto de manera más rápida y segura.</li>
                         </ol>
                       </div>
@@ -830,7 +830,7 @@ export function DocumentacionNewContent() {
                         <ol className="list-decimal list-inside space-y-2 text-sm text-gray-900">
                           <li>El usuario abre una página del sitio web.</li>
                           <li>El sistema muestra el contenido. Si existe una animación decorativa esta no debe parpadear más de tres veces por segundo.</li>
-                          <li>Para carruseles, el sistema provee un mecanismo de control claramente visible (ej. un botón de "Pausa").</li>
+                          <li>Para carruseles, el sistema provee un mecanismo de control claramente visible (ej. un botón de &quot;Pausa&quot;).</li>
                           <li>El usuario activa el control para detener el paso de elementos.</li>
                           <li>El sistema detiene inmediatamente todo el movimiento.</li>
                           <li>El usuario puede consumir el contenido de la página de forma estática y segura.</li>
@@ -892,7 +892,7 @@ export function DocumentacionNewContent() {
                           <li>El sistema presenta el contenido con una estructura HTML semántica correcta (títulos &lt;h1&gt;, &lt;h2&gt;, párrafos &lt;p&gt;, listas &lt;ul&gt;, etc.).</li>
                           <li>El lector de pantalla anuncia el título de la página.</li>
                           <li>El usuario presiona un comando para navegar por encabezados (ej. la tecla H).</li>
-                          <li>El lector de pantalla lee el siguiente encabezado, permitiendo al usuario "escanear" la estructura del contenido para entender su jerarquía.</li>
+                          <li>El lector de pantalla lee el siguiente encabezado, permitiendo al usuario &quot;escanear&quot; la estructura del contenido para entender su jerarquía.</li>
                           <li>El usuario utiliza las flechas del teclado para que el lector de pantalla lea el contenido (párrafos, listas) de forma secuencial.</li>
                         </ol>
                       </div>
@@ -1046,21 +1046,21 @@ export function DocumentacionNewContent() {
                         <h4 className="font-semibold text-gray-800 mb-3">Algoritmo:</h4>
                         <ol className="list-decimal list-inside space-y-2 text-sm text-gray-900">
                           <li>El usuario navega usando su teclado o dispositivo de ayuda hasta una página que contiene un formulario.</li>
-                          <li>Cada campo del formulario tiene un rótulo visible (ej.: "Nombre completo").</li>
-                          <li>Si hay campos obligatorios, se indica con texto (por ejemplo: "*Campo obligatorio").</li>
+                          <li>Cada campo del formulario tiene un rótulo visible (ej.: &quot;Nombre completo&quot;).</li>
+                          <li>Si hay campos obligatorios, se indica con texto (por ejemplo: &quot;*Campo obligatorio&quot;).</li>
                           <li>Junto a campos complejos (como fechas o contraseñas), se muestra un ícono de ayuda con instrucciones breves.</li>
-                          <li>El usuario completa los campos y navega hasta el botón "Enviar".</li>
-                          <li>El usuario activa el botón "Enviar".</li>
+                          <li>El usuario completa los campos y navega hasta el botón &quot;Enviar&quot;.</li>
+                          <li>El usuario activa el botón &quot;Enviar&quot;.</li>
                           <li>Si hay un error de validación:
                             <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
                               <li>El sistema mueve el foco directamente al primer campo que contiene un error.</li>
-                              <li>El sistema muestra un mensaje de texto, junto al campo, explicando el error de forma clara. (ej. "El formato del correo es incorrecto").</li>
+                              <li>El sistema muestra un mensaje de texto, junto al campo, explicando el error de forma clara. (ej. &quot;El formato del correo es incorrecto&quot;).</li>
                             </ul>
                           </li>
                           <li>Si el envío es exitoso:
                             <ul className="list-disc list-inside ml-6 mt-2 space-y-1">
                               <li>El sistema procesa los datos.</li>
-                              <li>El sistema muestra un mensaje de confirmación claro (ej. "Formulario enviado con éxito").</li>
+                              <li>El sistema muestra un mensaje de confirmación claro (ej. &quot;Formulario enviado con éxito&quot;).</li>
                               <li>El sistema mueve el foco a este mensaje de confirmación para que el usuario sepa de inmediato que la acción se completó.</li>
                             </ul>
                           </li>
@@ -1082,7 +1082,7 @@ export function DocumentacionNewContent() {
                         <ol className="list-decimal list-inside space-y-2 text-sm text-gray-900">
                           <li>El usuario abre una página con contenido de video.</li>
                           <li>El sistema muestra un reproductor de video con un botón de subtítulos visible.</li>
-                          <li>El usuario da clic en el botón "Subtítulos" o "CC".</li>
+                          <li>El usuario da clic en el botón &quot;Subtítulos&quot; o &quot;CC&quot;.</li>
                           <li>El sistema activa los subtítulos si estaban desactivados, o los desactiva si estaban activos.</li>
                           <li>El video continúa con subtítulos visibles o sin ellos, según la selección del usuario.</li>
                         </ol>

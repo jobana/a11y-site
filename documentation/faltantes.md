@@ -157,3 +157,9 @@ interface FormFieldProps {
 **El sitio cumple aproximadamente el 70% de los requisitos descritos en los algoritmos. Las funcionalidades básicas de navegación y estructura están implementadas, pero faltan las funcionalidades avanzadas de accesibilidad visual y los controles específicos para diferentes tipos de discapacidad.**
 
 **¿Te gustaría que implementemos alguna de estas funcionalidades faltantes?** 🚀
+
+falta boton buscar
+fatan recursos descargables
+falta ia , apis implementar
+faltan test unitarios con casos de uso
+falta revision exhaustiva de recursos

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { NavigationMenu } from '../navigation/NavigationMenu'
-import { SearchBox } from '../ui/SearchBox'
+// import { SearchBox } from '../ui/SearchBox'
 
 interface SidebarProps {
   collapsed?: boolean
@@ -17,7 +17,6 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
         transition-all duration-300 ease-in-out z-40
         ${collapsed ? 'w-16' : 'w-72'}
       `}
-      role="complementary"
       aria-label="Navegación principal"
     >
       {/* Header del Sidebar */}
@@ -63,12 +62,14 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
 
       {/* Contenido del Sidebar */}
       <div className="flex flex-col h-full overflow-hidden">
-        {/* Buscador */}
+        {/* Buscador - TEMPORALMENTE OCULTO */}
+        {/* 
         {!collapsed && (
           <div className="p-4 border-b border-primary-20">
             <SearchBox />
           </div>
         )}
+        */}
 
         {/* Navegación Principal */}
         <nav 
