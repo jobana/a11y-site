@@ -1,0 +1,50 @@
+{
+  "name": "temp-project",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
+    "start": "next start",
+    "lint": "eslint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:accessibility": "jest tests/accessibility",
+    "test:ci": "jest --ci --coverage --watchAll=false"
+  },
+  "dependencies": {
+    "@axe-core/react": "^4.10.2",
+    "@testing-library/jest-dom": "^6.8.0",
+    "@testing-library/react": "^16.3.0",
+    "@types/marked": "^5.0.2",
+    "clsx": "^2.1.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "gray-matter": "^4.0.3",
+    "lucide-react": "^0.541.0",
+    "marked": "^16.2.0",
+    "next": "15.5.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "sass": "^1.90.0",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.21",
+    "babel-jest": "^30.0.5",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.0",
+    "jest-axe": "^10.0.0",
+    "jest-html-reporters": "^3.1.7",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
+  }
+}
