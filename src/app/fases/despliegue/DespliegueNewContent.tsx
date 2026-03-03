@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import Link from 'next/link'
 import {
   Button,
   Card, CardHeader, CardContent, CardFooter,
@@ -434,19 +433,15 @@ export function DespliegueNewContent() {
         {/* 6. Navegación */}
         <section className="border-t border-primary-20 pt-12">
           <div className="flex justify-between items-center">
-            <Link href="/fases/pruebas">
-              <Button variant="outline" size="lg">
-                <Icon icon={ArrowLeft} size="sm" className="mr-2" />
-                Fase 4: Pruebas
-              </Button>
-            </Link>
-            
-            <Link href="/documentacion">
-              <Button variant="primary" size="lg">
-                Documentación
-                <Icon icon={ArrowRight} size="sm" className="ml-2" />
-              </Button>
-            </Link>
+            <Button href="/fases/pruebas" variant="outline" size="lg">
+              <Icon icon={ArrowLeft} size="sm" className="mr-2" />
+              Fase 4: Pruebas
+            </Button>
+
+            <Button href="/documentacion" variant="primary" size="lg">
+              Documentación
+              <Icon icon={ArrowRight} size="sm" className="ml-2" />
+            </Button>
           </div>
         </section>
 

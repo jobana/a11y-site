@@ -163,7 +163,7 @@ export async function getSiteNavigation() {
       description: 'Accesibilidad en cada fase del desarrollo',
       children: [
         { title: 'Planeación', href: '/fases/planeacion', description: 'Requisitos y planificación accesible' },
-        { title: 'Diseño', href: '/fases/diseño', description: 'Principios de diseño inclusivo' },
+        { title: 'Diseño', href: '/fases/diseno', description: 'Principios de diseño inclusivo' },
         { title: 'Desarrollo', href: '/fases/desarrollo', description: 'Implementación de código accesible' },
         { title: 'Pruebas', href: '/fases/pruebas', description: 'Testing y validación de accesibilidad' },
         { title: 'Despliegue', href: '/fases/despliegue', description: 'Mantenimiento y monitoreo' }

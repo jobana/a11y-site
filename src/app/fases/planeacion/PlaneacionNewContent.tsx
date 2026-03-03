@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import Link from 'next/link'
 import {
   Button,
   Card, CardHeader, CardContent, CardFooter,
@@ -184,7 +183,7 @@ export function PlaneacionNewContent() {
             </p>
             <div className="bg-secondary-10 border border-secondary-20 rounded-lg p-4">
               <p className="text-gray-900 font-medium text-sm">
-                💡 Como muestra el gráfico, el costo de la corrección aumenta exponencialmente con cada fase. 
+                <span aria-hidden="true">💡</span> Como muestra el gráfico, el costo de la corrección aumenta exponencialmente con cada fase.
                 La estrategia más inteligente es, por tanto, establecer la accesibilidad como un requisito 
                 no funcional (RNF) crítico desde el primer día.
               </p>
@@ -401,19 +400,15 @@ export function PlaneacionNewContent() {
       {/* 7. Navegación */}
       <section className="border-t border-primary-20 pt-12">
         <div className="flex justify-between items-center">
-          <Link href="/generalidades">
-            <Button variant="outline" size="lg">
-              <Icon icon={ArrowLeft} size="sm" className="mr-2" />
-              Generalidades
-            </Button>
-          </Link>
-          
-          <Link href="/fases/diseno">
-            <Button variant="primary" size="lg">
-              Fase 2: Diseño
-              <Icon icon={ArrowRight} size="sm" className="ml-2" />
-            </Button>
-          </Link>
+          <Button href="/generalidades" variant="outline" size="lg">
+            <Icon icon={ArrowLeft} size="sm" className="mr-2" />
+            Generalidades
+          </Button>
+
+          <Button href="/fases/diseno" variant="primary" size="lg">
+            Fase 2: Diseño
+            <Icon icon={ArrowRight} size="sm" className="ml-2" />
+          </Button>
         </div>
       </section>
 

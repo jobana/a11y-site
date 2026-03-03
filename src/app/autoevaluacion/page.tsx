@@ -11,7 +11,7 @@ export default function AutoevaluacionPage() {
         </p>
         <div className="bg-secondary-10 border border-secondary-20 rounded-lg p-6">
           <p className="text-secondary-80">
-            ⚠️ Esta sección ya no forma parte de la navegación principal del sitio.
+            <span aria-hidden="true">⚠️</span> Esta sección ya no forma parte de la navegación principal del sitio.
           </p>
         </div>
       </div>

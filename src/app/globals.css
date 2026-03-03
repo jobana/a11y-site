@@ -14,8 +14,8 @@
   --primary-30: #ddb5c9;
   --primary-40: #d097b3;
   --primary-50: #c279a2;  /* Color base */
-  --primary-60: #a8648a;
-  --primary-70: #8e4f71;
+  --primary-60: #743a59;
+  --primary-70: #743a59;
   --primary-80: #743a59;
   --primary-90: #5a2540;
   --primary-100: #401028;
@@ -39,9 +39,9 @@
   --tertiary-20: #ffe4dc;
   --tertiary-30: #ffcab7;
   --tertiary-40: #ffb092;
-  --tertiary-50: #ff8a65;  /* Color base */
-  --tertiary-60: #e6705a;
-  --tertiary-70: #cc564f;
+  --tertiary-50: #b33c44;  /* Color base */
+  --tertiary-60: #b33c44;
+  --tertiary-70: #b33c44;
   --tertiary-80: #b33c44;
   --tertiary-90: #992239;
   --tertiary-100: #80082e;
@@ -407,15 +407,15 @@ button:not([class*="bg-"]):focus {
 
 /* Prevenir scroll horizontal */
 html, body {
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100vw;
 }
 
 /* Contenedores principales sin scroll horizontal */
-.main-content, 
+.main-content,
 .content-container,
 .internal-page-layout {
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
 }
 

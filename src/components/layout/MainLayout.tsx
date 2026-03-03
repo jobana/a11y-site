@@ -31,10 +31,9 @@ export function MainLayout({ children }: MainLayoutProps) {
         <main 
           id="main-content"
           className={`
-            flex-1 min-h-screen transition-all duration-300 ease-in-out overflow-x-hidden
+            flex-1 min-h-screen overflow-x-clip
             ${sidebarCollapsed ? 'ml-16' : 'ml-72'}
           `}
-          role="main"
           aria-label="Contenido principal"
         >
           {children}

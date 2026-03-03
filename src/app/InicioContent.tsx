@@ -1,8 +1,7 @@
 'use client'
 
 import React from 'react'
-import Link from 'next/link'
-import { 
+import {
   Button, 
   Card, CardHeader, CardContent, CardFooter,
   Tabs, TabsList, TabsTrigger, TabsContent,
@@ -27,7 +26,7 @@ export function InicioContent() {
       <section className="bg-gradient-to-br from-primary-50 via-secondary-50 to-secondary-70 text-white -mx-4 sm:-mx-6 lg:-mx-8">
         <div className="max-w-6xl mx-auto px-4 py-16 sm:py-24">
           <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+            <h1 className="text-4xl sm:text-4xl font-bold leading-tight ">
               Guía de Accesibilidad Web para el Ciclo de Vida del Software
             </h1>
           </div>
@@ -47,111 +46,8 @@ export function InicioContent() {
           </div>
         </div>
       </section>
-
-      {/* De la Intención a la Práctica */}
-      <section className="py-16 bg-primary-10">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
-              De la Intención a la Práctica: Un Pilar de Calidad y Eficiencia
-            </h2>
-            <p className="text-xl text-gray-80 max-w-4xl mx-auto leading-relaxed">
-              En el desarrollo de software actual, la accesibilidad es un factor clave para la excelencia. 
-              Sin embargo, a menudo existe una brecha entre la intención de ser inclusivos y la implementación práctica. 
-              Esta guía nace para estandarizar el conocimiento y los procesos, asegurando que cualquier equipo pueda 
-              construir soluciones digitales accesibles de manera efectiva.
-            </p>
-          </div>
-
-          {/* Tabs Section - Más Allá del Cumplimiento */}
-          <div className="mb-16">
-            <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center">
-              Más Allá del Cumplimiento
-            </h3>
-            
-            <Tabs defaultValue="imperativo" orientation="horizontal">
-              <TabsList className="grid w-full grid-cols-2 max-w-2xl mx-auto">
-                <TabsTrigger value="imperativo">Un Imperativo Ético y Legal</TabsTrigger>
-                <TabsTrigger value="ventaja">Ventaja Competitiva y Operativa</TabsTrigger>
-              </TabsList>
-              
-              <TabsContent value="imperativo" className="mt-8">
-                <Card className="max-w-4xl mx-auto">
-                  <CardHeader 
-                    title="Un Imperativo Ético y Legal"
-                    icon={<Icon icon={Scale} size="lg" className="text-primary-60" />}
-                  />
-                  <CardContent>
-                    <p className="text-gray-900 leading-relaxed mb-4">
-                      La accesibilidad es un principio fundamental para la inclusión social y un requisito legal 
-                      en un número creciente de países. En Colombia, normativas como la <strong>Ley 1618 de 2013</strong> y 
-                      la <strong>Resolución 1519 de 2020</strong> establecen un marco claro.
-                    </p>
-                    <p className="text-gray-900 leading-relaxed">
-                      Adoptar esta estrategia asegura que los desarrollos no solo se adhieran a la legislación, 
-                      sino que garanticen una experiencia de usuario equitativa para todas las personas, incluidas 
-                      aquellas con discapacidad visual, auditiva, motora o cognitiva.
-                    </p>
-                  </CardContent>
-                  <CardFooter>
-                    <Link href="/generalidades">
-                      <Button variant="primary" size="sm">
-                        Conocer Marco Legal
-                      </Button>
-                    </Link>
-                  </CardFooter>
-                </Card>
-              </TabsContent>
-              
-              <TabsContent value="ventaja" className="mt-8">
-                <Card className="max-w-4xl mx-auto">
-                  <CardHeader 
-                    title="Calidad, Eficiencia e Innovación"
-                    description="Una Ventaja Competitiva y Operativa"
-                    icon={<Icon icon={Zap} size="lg" className="text-secondary-60" />}
-                  />
-                  <CardContent>
-                    <p className="text-gray-900 leading-relaxed mb-4">
-                      La consideración tardía de la accesibilidad genera sobrecostos y refactorizaciones innecesarias. 
-                      Al integrar la accesibilidad desde las fases tempranas del ciclo de vida (<strong>Shift-Left</strong>), 
-                      se optimizan los procesos de desarrollo, se mejora la calidad y usabilidad del producto para todos 
-                      los usuarios y se fortalece la competitividad en un mercado global que exige tecnología responsable e inclusiva.
-                    </p>
-                    <div className="bg-secondary-10 border border-secondary-20 rounded-lg p-4">
-                      <p className="text-gray-900 font-medium text-sm">
-                        💡 <strong>Shift-Left:</strong> Integrar la accesibilidad desde el inicio reduce hasta un 70% 
-                        los costos de corrección comparado con implementarla al final del desarrollo.
-                      </p>
-                    </div>
-                  </CardContent>
-                  <CardFooter>
-                    <Link href="/fases">
-                      <Button variant="secondary" size="sm">
-                        Ver Metodología Shift-Left
-                      </Button>
-                    </Link>
-                  </CardFooter>
-                </Card>
-              </TabsContent>
-            </Tabs>
-          </div>
-        </div>
-      </section>
-
-      {/* Accesibilidad Integrada */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6">
-              Accesibilidad Integrada en el Flujo de Trabajo
-            </h2>
-            <p className="text-xl text-gray-80 max-w-4xl mx-auto leading-relaxed">
-              La accesibilidad no es una tarea exclusiva de la fase de pruebas; es una responsabilidad compartida. 
-              Esta guía ofrece recursos, checklists y buenas prácticas específicas para cada rol a lo largo de todo 
-              el ciclo de desarrollo.
-            </p>
-          </div>
-
           {/* Cards Section - Las 5 Fases */}
           <div className="mb-12">
             <h3 className="text-2xl font-bold text-gray-800 mb-8 text-center flex items-center justify-center gap-3">
@@ -173,11 +69,9 @@ export function InicioContent() {
                   </p>
                 </CardContent>
                 <CardFooter>
-                  <Link href="/fases/planeacion" className="w-full">
-                    <Button variant="primary" size="sm" className="w-full">
-                      Explorar Planeación
-                    </Button>
-                  </Link>
+                  <Button href="/fases/planeacion" variant="primary" size="sm" className="w-full">
+                    Explorar Planeación
+                  </Button>
                 </CardFooter>
               </Card>
 
@@ -194,11 +88,9 @@ export function InicioContent() {
                   </p>
                 </CardContent>
                 <CardFooter>
-                  <Link href="/fases/diseño" className="w-full">
-                    <Button variant="primary" size="sm" className="w-full">
-                      Explorar Diseño
-                    </Button>
-                  </Link>
+                  <Button href="/fases/diseno" variant="primary" size="sm" className="w-full">
+                    Explorar Diseño
+                  </Button>
                 </CardFooter>
               </Card>
 
@@ -215,11 +107,9 @@ export function InicioContent() {
                   </p>
                 </CardContent>
                 <CardFooter>
-                  <Link href="/fases/desarrollo" className="w-full">
-                    <Button variant="primary" size="sm" className="w-full">
-                      Explorar Desarrollo
-                    </Button>
-                  </Link>
+                  <Button href="/fases/desarrollo" variant="primary" size="sm" className="w-full">
+                    Explorar Desarrollo
+                  </Button>
                 </CardFooter>
               </Card>
 
@@ -236,11 +126,9 @@ export function InicioContent() {
                   </p>
                 </CardContent>
                 <CardFooter>
-                  <Link href="/fases/pruebas" className="w-full">
-                    <Button variant="primary" size="sm" className="w-full">
-                      Explorar Pruebas
-                    </Button>
-                  </Link>
+                  <Button href="/fases/pruebas" variant="primary" size="sm" className="w-full">
+                    Explorar Pruebas
+                  </Button>
                 </CardFooter>
               </Card>
 
@@ -257,11 +145,9 @@ export function InicioContent() {
                   </p>
                 </CardContent>
                 <CardFooter>
-                  <Link href="/fases/despliegue" className="w-full">
-                    <Button variant="primary" size="sm" className="w-full">
-                      Explorar Despliegue
-                    </Button>
-                  </Link>
+                  <Button href="/fases/despliegue" variant="primary" size="sm" className="w-full">
+                    Explorar Despliegue
+                  </Button>
                 </CardFooter>
               </Card>
             </div>
@@ -292,32 +178,27 @@ export function InicioContent() {
                 </p>
               </CardContent>
               <CardFooter>
-                <Link href="/generalidades" className="w-full">
-                  <Button variant="secondary" size="md" className="w-full bg-tertiary-50 hover:bg-tertiary-60">
-                    Ver Generalidades
-                  </Button>
-                </Link>
+                <Button href="/generalidades" variant="secondary" size="md" className="w-full bg-tertiary-50 hover:bg-tertiary-60">
+                  Ver Generalidades
+                </Button>
               </CardFooter>
             </Card>
 
             {/* Checklists por Perfil */}
             <Card variant="interactive" className="text-center">
               <CardHeader 
-                title="Checklists por Perfil"
+                title="Recursos"
                 icon={<Icon icon={CheckSquare2} size="xl" className="text-tertiary-50" />}
               />
               <CardContent>
                 <p className="text-gray-900 text-sm leading-relaxed mb-4">
-                  Accede a las listas de verificación rápidas para Diseñadores, Desarrolladores 
-                  y Analistas de Calidad.
+                 Recursos adicionales para profundizar en prácticas de accesibilidad web.
                 </p>
               </CardContent>
               <CardFooter>
-                <Link href="/autoevaluacion" className="w-full">
-                  <Button variant="secondary" size="md" className="w-full bg-tertiary-50 hover:bg-tertiary-60">
-                    Ir a Autoevaluación
-                  </Button>
-                </Link>
+                <Button href="/autoevaluacion" variant="secondary" size="md" className="w-full bg-tertiary-50 hover:bg-tertiary-60">
+                  Ir a Recursos
+                </Button>
               </CardFooter>
             </Card>
 
@@ -334,11 +215,9 @@ export function InicioContent() {
                 </p>
               </CardContent>
               <CardFooter>
-                <Link href="/accesibilidad-sitio" className="w-full">
-                  <Button variant="secondary" size="md" className="w-full bg-tertiary-50 hover:bg-tertiary-60">
-                    Ver Declaración
-                  </Button>
-                </Link>
+                <Button href="/accesibilidad-sitio" variant="secondary" size="md" className="w-full bg-tertiary-50 hover:bg-tertiary-60">
+                  Ver Declaración
+                </Button>
               </CardFooter>
             </Card>
           </div>
@@ -348,25 +227,10 @@ export function InicioContent() {
       {/* CTA Final */}
       <section className="py-16 bg-gradient-to-r from-primary-60 via-secondary-60 to-tertiary-60 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-            ¿Listo para comenzar?
-          </h2>
           <p className="text-xl text-primary-10 mb-8 leading-relaxed">
-            Empieza con <strong>Generalidades</strong> para entender los conceptos fundamentales, 
-            o salta directo a <strong>Planeación</strong> si ya tienes experiencia básica en accesibilidad.
+           Guía de Accesibilidad Web para el Ciclo de Vida del Software
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/generalidades">
-              <Button variant="primary" size="lg" className="bg-white text-gray-80 hover:bg-primary-10">
-                Empezar con Generalidades
-              </Button>
-            </Link>
-            <Link href="/fases/planeacion">
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-gray-80">
-                Saltar a Planeación
-              </Button>
-            </Link>
-          </div>
+          <p>Jobana Garavito - 2026</p>
         </div>
       </section>
     </>

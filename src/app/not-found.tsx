@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { Button } from '@/components/ui'
 
 export default function NotFound() {
@@ -14,19 +13,15 @@ export default function NotFound() {
             Lo sentimos, la página que buscas no existe o ha sido movida.
           </p>
         </div>
-        
+
         <div className="space-y-4">
-          <Link href="/">
-            <Button variant="primary" size="lg" className="w-full">
-              Volver al inicio
-            </Button>
-          </Link>
-          
-          <Link href="/generalidades">
-            <Button variant="outline" size="lg" className="w-full">
-              Ver generalidades
-            </Button>
-          </Link>
+          <Button href="/" variant="primary" size="lg" className="w-full">
+            Volver al inicio
+          </Button>
+
+          <Button href="/generalidades" variant="outline" size="lg" className="w-full">
+            Ver generalidades
+          </Button>
         </div>
       </div>
     </div>

@@ -1,7 +1,4 @@
-'use client'
-
 import React from 'react'
-import Link from 'next/link'
 import {
   Button,
   Card, CardHeader, CardContent, CardFooter,
@@ -1172,19 +1169,15 @@ export function DocumentacionNewContent() {
         {/* 6. Navegación */}
         <section className="border-t border-primary-20 pt-12">
           <div className="flex justify-between items-center">
-            <Link href="/fases/despliegue">
-              <Button variant="outline" size="lg">
-                <Icon icon={ArrowLeft} size="sm" className="mr-2" />
-                Fase 5: Despliegue
-              </Button>
-            </Link>
-            
-            <Link href="/recursos">
-              <Button variant="primary" size="lg">
-                Recursos
-                <Icon icon={ArrowRight} size="sm" className="ml-2" />
-              </Button>
-            </Link>
+            <Button href="/fases/despliegue" variant="outline" size="lg">
+              <Icon icon={ArrowLeft} size="sm" className="mr-2" />
+              Fase 5: Despliegue
+            </Button>
+
+            <Button href="/recursos" variant="primary" size="lg">
+              Recursos
+              <Icon icon={ArrowRight} size="sm" className="ml-2" />
+            </Button>
           </div>
         </section>
 

@@ -1,7 +1,7 @@
 'use client'
 
-import React, { createContext, useContext, useState, useRef, forwardRef } from 'react'
-import { cn, generateId, keyboardUtils } from '@/lib/utils'
+import React, { createContext, useContext, useState, useId, useRef, forwardRef } from 'react'
+import { cn, keyboardUtils } from '@/lib/utils'
 
 // Context for Tabs
 interface TabsContextValue {
@@ -9,6 +9,7 @@ interface TabsContextValue {
   onValueChange: (value: string) => void
   orientation: 'horizontal' | 'vertical'
   activationMode: 'automatic' | 'manual'
+  instanceId: string
 }
 
 const TabsContext = createContext<TabsContextValue | null>(null)
@@ -49,6 +50,9 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
     const isControlled = controlledValue !== undefined
     const value = isControlled ? controlledValue : internalValue
 
+    // useId() generates a stable ID consistent between server and client (no hydration mismatch)
+    const instanceId = useId()
+
     const handleValueChange = (newValue: string) => {
       if (!isControlled) {
         setInternalValue(newValue)
@@ -61,6 +65,7 @@ const Tabs = forwardRef<HTMLDivElement, TabsProps>(
       onValueChange: handleValueChange,
       orientation,
       activationMode,
+      instanceId,
     }
 
     return (
@@ -91,7 +96,7 @@ export interface TabsListProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
   ({ className, children, ...props }, ref) => {
-    const { orientation } = useTabs()
+    const { orientation, activationMode } = useTabs()
     const listRef = useRef<HTMLDivElement>(null)
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
@@ -101,7 +106,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
 
       if (triggers.length === 0) return
 
-      const currentIndex = triggers.findIndex(trigger => 
+      const currentIndex = triggers.findIndex(trigger =>
         trigger === document.activeElement
       )
 
@@ -134,8 +139,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
       if (targetIndex !== currentIndex) {
         event.preventDefault()
         triggers[targetIndex].focus()
-        
-        // Auto-activate if activation mode is automatic
+
         if (activationMode === 'automatic') {
           triggers[targetIndex].click()
         }
@@ -148,11 +152,10 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
         role="tablist"
         aria-orientation={orientation}
         onKeyDown={handleKeyDown}
-        tabIndex={0}
         className={cn(
           'tabs-list inline-flex items-center',
-          orientation === 'horizontal' 
-            ? 'flex-row border-b border-primary-20' 
+          orientation === 'horizontal'
+            ? 'flex-row border-b border-primary-20'
             : 'flex-col border-r border-primary-20 pr-4',
           className
         )}
@@ -177,10 +180,12 @@ export interface TabsTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonE
 
 const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(
   ({ className, value, disabled = false, children, ...props }, ref) => {
-    const { value: selectedValue, onValueChange, orientation } = useTabs()
+    const { value: selectedValue, onValueChange, orientation, instanceId } = useTabs()
     const isSelected = selectedValue === value
-    const triggerId = useRef(generateId('tab-trigger'))
-    const panelId = useRef(generateId('tab-panel'))
+
+    // IDs derived from the shared instanceId + tab value — always match the Content
+    const triggerId = `${instanceId}-trigger-${value}`
+    const panelId = `${instanceId}-panel-${value}`
 
     const handleClick = () => {
       if (!disabled) {
@@ -190,7 +195,7 @@ const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
       const { ENTER, SPACE } = keyboardUtils.KEYS
-      
+
       if (event.key === ENTER || event.key === SPACE) {
         event.preventDefault()
         handleClick()
@@ -200,12 +205,12 @@ const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(
     return (
       <button
         ref={ref}
-        id={triggerId.current}
+        id={triggerId}
         role="tab"
         type="button"
         disabled={disabled}
         aria-selected={isSelected}
-        aria-controls={panelId.current}
+        aria-controls={panelId}
         tabIndex={isSelected ? 0 : -1}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
@@ -213,14 +218,14 @@ const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(
           'tabs-trigger relative px-4 py-2 text-sm font-medium transition-all duration-200',
           'focus:outline-none focus:ring-2 focus:ring-primary-50 focus:ring-offset-2',
           'disabled:opacity-50 disabled:cursor-not-allowed',
-          orientation === 'horizontal' 
-            ? 'border-b-2 border-transparent' 
+          orientation === 'horizontal'
+            ? 'border-b-2 border-transparent'
             : 'border-r-2 border-transparent w-full text-left',
           isSelected
             ? cn(
                 'text-gray-80',
-                orientation === 'horizontal' 
-                  ? 'border-primary-50' 
+                orientation === 'horizontal'
+                  ? 'border-primary-50'
                   : 'border-primary-50 bg-primary-10'
               )
             : 'text-gray-80 hover:text-primary-90 hover:bg-primary-10',
@@ -245,19 +250,21 @@ export interface TabsContentProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const TabsContent = forwardRef<HTMLDivElement, TabsContentProps>(
   ({ className, value, children, ...props }, ref) => {
-    const { value: selectedValue } = useTabs()
+    const { value: selectedValue, instanceId } = useTabs()
     const isSelected = selectedValue === value
-    const triggerId = useRef(generateId('tab-trigger'))
-    const panelId = useRef(generateId('tab-panel'))
+
+    // IDs derived the same way as TabsTrigger — always match
+    const triggerId = `${instanceId}-trigger-${value}`
+    const panelId = `${instanceId}-panel-${value}`
 
     if (!isSelected) return null
 
     return (
       <div
         ref={ref}
-        id={panelId.current}
+        id={panelId}
         role="tabpanel"
-        aria-labelledby={triggerId.current}
+        aria-labelledby={triggerId}
         tabIndex={0}
         className={cn(
           'tabs-content focus:outline-none focus:ring-2 focus:ring-primary-50 focus:ring-offset-2',

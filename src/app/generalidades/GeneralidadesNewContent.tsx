@@ -1,7 +1,4 @@
-'use client'
-
 import React from 'react'
-import Link from 'next/link'
 import {
   Button,
   Card, CardHeader, CardContent, CardFooter,
@@ -443,7 +440,7 @@ export function GeneralidadesNewContent() {
                 
                 <div className="mt-6 bg-primary-10 border border-primary-20 rounded-lg p-4">
                   <p className="text-gray-900 font-medium text-sm">
-                    💡 Este marco legal evidencia que la accesibilidad ha dejado de ser una recomendación para 
+                    <span aria-hidden="true">💡</span> Este marco legal evidencia que la accesibilidad ha dejado de ser una recomendación para
                     convertirse en un requisito fundamental en el desarrollo de software.
                   </p>
                 </div>

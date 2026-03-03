@@ -13,8 +13,7 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
   return (
     <aside 
       className={`
-        fixed left-0 top-0 h-full bg-white border-r border-primary-20 
-        transition-all duration-300 ease-in-out z-40
+        fixed left-0 top-0 h-full bg-white border-r border-primary-20 z-40
         ${collapsed ? 'w-16' : 'w-72'}
       `}
       aria-label="Navegación principal"
@@ -44,11 +43,12 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
           aria-label={collapsed ? 'Expandir navegación' : 'Contraer navegación'}
           aria-expanded={!collapsed}
         >
-          <svg 
-            className="w-5 h-5 text-gray-80" 
-            fill="none" 
-            stroke="currentColor" 
+          <svg
+            className="w-5 h-5 text-gray-80"
+            fill="none"
+            stroke="currentColor"
             viewBox="0 0 24 24"
+            aria-hidden="true"
           >
             <path 
               strokeLinecap="round" 
@@ -72,10 +72,9 @@ export function Sidebar({ collapsed = false, onToggle }: SidebarProps) {
         */}
 
         {/* Navegación Principal */}
-        <nav 
+        <nav
           id="navigation"
           className="flex-1 overflow-y-auto py-4 bg-primary-10"
-          role="navigation"
           aria-label="Navegación principal del sitio"
         >
           <NavigationMenu collapsed={collapsed} />

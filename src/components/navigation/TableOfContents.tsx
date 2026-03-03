@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import Link from 'next/link'
 import { Icon, FileText, ChevronUp } from '@/components/ui'
 
 interface TocItem {
@@ -95,34 +94,22 @@ export function TableOfContents({ content, className = '' }: TableOfContentsProp
               
               return (
                 <li key={item.id} style={{ paddingLeft }}>
-                  <Link
+                  <a
                     href={`#${item.id}`}
                     className={`
                       block py-1.5 px-2 rounded transition-colors duration-200 no-underline
                       hover:bg-primary-10 hover:text-gray-80
                       focus:outline-none focus:ring-2 focus:ring-primary-50 focus:ring-offset-1
-                      ${isActive 
-                        ? 'text-gray-80 bg-primary-10 border-l-2 border-primary-50 font-medium' 
+                      ${isActive
+                        ? 'text-gray-80 bg-primary-10 border-l-2 border-primary-50 font-medium'
                         : 'text-gray-80 hover:text-gray-800'
                       }
                     `}
-                    onClick={(e) => {
-                      e.preventDefault()
-                      const element = document.getElementById(item.id)
-                      if (element) {
-                        element.scrollIntoView({
-                          behavior: 'smooth',
-                          block: 'start'
-                        })
-                        // Actualizar URL sin hacer scroll adicional
-                        window.history.pushState(null, '', `#${item.id}`)
-                      }
-                    }}
                   >
                     <span className="line-clamp-2">
                       {item.text}
                     </span>
-                  </Link>
+                  </a>
                 </li>
               )
             })}
@@ -132,6 +119,7 @@ export function TableOfContents({ content, className = '' }: TableOfContentsProp
         {/* Enlace para volver arriba */}
         <div className="mt-4 pt-3 border-t border-primary-20">
           <button
+            type="button"
             onClick={() => {
               window.scrollTo({ top: 0, behavior: 'smooth' })
               window.history.pushState(null, '', window.location.pathname)

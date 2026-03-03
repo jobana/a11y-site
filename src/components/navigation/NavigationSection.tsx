@@ -32,6 +32,7 @@ export function NavigationSection({ section, collapsed = false }: NavigationSect
     <div className="mb-4">
       {/* Section Header */}
       <button
+        id={`section-${section.id}-header`}
         onClick={toggleExpanded}
         className={`
           w-full flex items-center justify-between p-2 rounded-md

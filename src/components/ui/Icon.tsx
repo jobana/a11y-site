@@ -37,13 +37,13 @@ const sizeMap = {
  * Icon component wrapper for Lucide React icons
  * Provides consistent sizing, accessibility, and styling
  */
-export function Icon({ 
-  icon: IconComponent, 
+export function Icon({
+  icon: IconComponent,
   className,
   size = 'md',
-  decorative = false,
+  decorative = true,
   'aria-label': ariaLabel,
-  ...props 
+  ...props
 }: IconProps) {
   const iconSize = typeof size === 'string' ? sizeMap[size] : size
 
@@ -51,9 +51,9 @@ export function Icon({
     <IconComponent
       size={iconSize}
       className={cn('flex-shrink-0', className)}
-      aria-hidden={decorative}
+      aria-hidden={decorative || undefined}
       aria-label={!decorative ? ariaLabel : undefined}
-      role={!decorative ? 'img' : undefined}
+      role={!decorative && ariaLabel ? 'img' : undefined}
       {...props}
     />
   )

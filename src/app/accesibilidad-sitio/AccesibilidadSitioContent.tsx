@@ -1,7 +1,5 @@
-'use client'
 
 import React from 'react'
-import Link from 'next/link'
 import {
   Button,
   Card, CardHeader, CardContent,
@@ -404,7 +402,7 @@ export function AccesibilidadSitioContent() {
                 <div className="space-y-4">
                   <div>
                     <span className="font-semibold text-gray-800">Estándares Evaluados:</span>
-                    <ul className="text-gray-900 mt-2">
+                    <ul role="list" className="text-gray-900 mt-2">
                       {informacionProducto.estandares.map((estandar, index) => (
                         <li key={index} className="flex items-center gap-2">
                           <Icon icon={CheckCircle} size="sm" className="text-secondary-50" />
@@ -415,7 +413,7 @@ export function AccesibilidadSitioContent() {
                   </div>
                   <div>
                     <span className="font-semibold text-gray-800">Tecnologías Utilizadas:</span>
-                    <ul className="text-gray-900 mt-2">
+                    <ul role="list" className="text-gray-900 mt-2">
                       {informacionProducto.tecnologias.map((tech, index) => (
                         <li key={index} className="flex items-center gap-2">
                           <Icon icon={CheckCircle} size="sm" className="text-primary-50" />
@@ -523,7 +521,7 @@ export function AccesibilidadSitioContent() {
                   icon={<Icon icon={funcion.icono} size="lg" className="text-secondary-50" />}
                 />
                 <CardContent>
-                  <ul className="space-y-3">
+                  <ul role="list" className="space-y-3">
                     {funcion.caracteristicas.map((caracteristica, cIndex) => (
                       <li key={cIndex} className="flex items-start gap-2">
                         <Icon icon={CheckCircle} size="sm" className="text-secondary-50 mt-0.5 flex-shrink-0" />
@@ -554,7 +552,7 @@ export function AccesibilidadSitioContent() {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <div>
                       <h4 className="font-semibold text-gray-800 mb-3">Herramientas Utilizadas:</h4>
-                      <ul className="space-y-2">
+                      <ul role="list" className="space-y-2">
                         {metodo.herramientas.map((herramienta, hIndex) => (
                           <li key={hIndex} className="flex items-center gap-2">
                             <Icon icon={CheckCircle} size="sm" className="text-primary-50" />
@@ -609,19 +607,15 @@ export function AccesibilidadSitioContent() {
         {/* 7. Navegación */}
         <section className="border-t border-primary-20 pt-12">
           <div className="flex justify-between items-center">
-            <Link href="/recursos">
-              <Button variant="outline" size="lg">
-                <Icon icon={ArrowLeft} size="sm" className="mr-2" />
-                Recursos
-              </Button>
-            </Link>
-            
-            <Link href="/contacto">
-              <Button variant="primary" size="lg">
-                Contacto
-                <Icon icon={ArrowRight} size="sm" className="ml-2" />
-              </Button>
-            </Link>
+            <Button href="/recursos" variant="outline" size="lg">
+              <Icon icon={ArrowLeft} size="sm" className="mr-2" />
+              Recursos
+            </Button>
+
+            <Button href="/contacto" variant="primary" size="lg">
+              Contacto
+              <Icon icon={ArrowRight} size="sm" className="ml-2" />
+            </Button>
           </div>
         </section>
 

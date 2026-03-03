@@ -1,9 +1,9 @@
 'use client'
 
-import React, { createContext, useContext, useState, useRef, useEffect, forwardRef } from 'react'
-import { cn, generateId, keyboardUtils } from '@/lib/utils'
+import React, { createContext, useContext, useState, useId, useRef, useEffect, forwardRef } from 'react'
+import { cn, keyboardUtils } from '@/lib/utils'
 
-// Context for Accordion
+// Context for Accordion root
 interface AccordionContextValue {
   type: 'single' | 'multiple'
   value: string | string[]
@@ -17,6 +17,22 @@ const useAccordion = () => {
   const context = useContext(AccordionContext)
   if (!context) {
     throw new Error('Accordion components must be used within an Accordion')
+  }
+  return context
+}
+
+// Context for AccordionItem — shares stable IDs between Trigger and Content
+interface AccordionItemContextValue {
+  triggerId: string
+  contentId: string
+}
+
+const AccordionItemContext = createContext<AccordionItemContextValue | null>(null)
+
+const useAccordionItem = () => {
+  const context = useContext(AccordionItemContext)
+  if (!context) {
+    throw new Error('AccordionTrigger and AccordionContent must be used within an AccordionItem')
   }
   return context
 }
@@ -102,33 +118,43 @@ export interface AccordionItemProps extends React.HTMLAttributes<HTMLDivElement>
 const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
   ({ className, value, disabled = false, children, ...props }, ref) => {
     const accordion = useAccordion()
-    const isOpen = Array.isArray(accordion.value) 
+    const isOpen = Array.isArray(accordion.value)
       ? accordion.value.includes(value)
       : accordion.value === value
 
+    // useId() generates stable IDs consistent between server and client (no hydration mismatch)
+    const id = useId()
+    const triggerId = `${id}-trigger`
+    const contentId = `${id}-content`
+
+    const itemContextValue: AccordionItemContextValue = {
+      triggerId,
+      contentId,
+    }
+
     return (
-      <div
-        ref={ref}
-        className={cn(
-          'border border-primary-20 rounded-lg overflow-hidden',
-          disabled && 'opacity-50 pointer-events-none',
-          className
-        )}
-        data-state={isOpen ? 'open' : 'closed'}
-        {...props}
-      >
-        {React.Children.map(children, child => {
-          if (React.isValidElement(child)) {
-            return React.cloneElement(child, { 
-              value, 
-              disabled, 
-              isOpen,
-              ...child.props 
-            } as any)
-          }
-          return child
-        })}
-      </div>
+      <AccordionItemContext.Provider value={itemContextValue}>
+        <div
+          ref={ref}
+          className={cn(
+            'border border-primary-20 rounded-lg overflow-hidden',
+            disabled && 'opacity-50 pointer-events-none',
+            className
+          )}
+          data-state={isOpen ? 'open' : 'closed'}
+          {...props}
+        >
+          {React.Children.map(children, child => {
+            if (React.isValidElement(child)) {
+              return React.cloneElement(
+                child as React.ReactElement<{ value?: string; disabled?: boolean; isOpen?: boolean }>,
+                { value, disabled, isOpen, ...child.props }
+              )
+            }
+            return child
+          })}
+        </div>
+      </AccordionItemContext.Provider>
     )
   }
 )
@@ -146,8 +172,7 @@ export interface AccordionTriggerProps extends React.ButtonHTMLAttributes<HTMLBu
 const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
   ({ className, value = '', disabled = false, isOpen = false, children, ...props }, ref) => {
     const accordion = useAccordion()
-    const triggerId = useRef(generateId('accordion-trigger'))
-    const contentId = useRef(generateId('accordion-content'))
+    const { triggerId, contentId } = useAccordionItem()
 
     const handleClick = () => {
       if (!disabled) {
@@ -157,7 +182,7 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
 
     const handleKeyDown = (event: React.KeyboardEvent) => {
       const { ENTER, SPACE } = keyboardUtils.KEYS
-      
+
       if (event.key === ENTER || event.key === SPACE) {
         event.preventDefault()
         handleClick()
@@ -167,11 +192,11 @@ const AccordionTrigger = forwardRef<HTMLButtonElement, AccordionTriggerProps>(
     return (
       <button
         ref={ref}
-        id={triggerId.current}
+        id={triggerId}
         type="button"
         disabled={disabled}
         aria-expanded={isOpen}
-        aria-controls={contentId.current}
+        aria-controls={contentId}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
         className={cn(
@@ -217,11 +242,10 @@ export interface AccordionContentProps extends React.HTMLAttributes<HTMLDivEleme
 }
 
 const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
-  ({ className, value = '', isOpen = false, children, ...props }, ref) => {
+  ({ className, isOpen = false, children, ...props }, ref) => {
     const contentRef = useRef<HTMLDivElement>(null)
     const [height, setHeight] = useState<number | undefined>(isOpen ? undefined : 0)
-    const triggerId = useRef(generateId('accordion-trigger'))
-    const contentId = useRef(generateId('accordion-content'))
+    const { triggerId, contentId } = useAccordionItem()
 
     useEffect(() => {
       if (contentRef.current) {
@@ -233,9 +257,9 @@ const AccordionContent = forwardRef<HTMLDivElement, AccordionContentProps>(
     return (
       <div
         ref={ref}
-        id={contentId.current}
+        id={contentId}
         role="region"
-        aria-labelledby={triggerId.current}
+        aria-labelledby={triggerId}
         className={cn(
           'overflow-hidden transition-all duration-300 ease-in-out',
           className

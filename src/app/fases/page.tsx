@@ -11,7 +11,7 @@ export default function FasesPage() {
         </p>
         <div className="bg-primary-10 border border-primary-20 rounded-lg p-6">
           <p className="text-primary-80">
-            🔄 Navega directamente a las fases desde el menú: Planeación, Diseño, Desarrollo, Pruebas y Despliegue.
+            <span aria-hidden="true">🔄</span> Navega directamente a las fases desde el menú: Planeación, Diseño, Desarrollo, Pruebas y Despliegue.
           </p>
         </div>
       </div>

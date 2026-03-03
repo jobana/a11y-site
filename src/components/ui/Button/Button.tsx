@@ -1,6 +1,7 @@
 'use client'
 
 import React, { forwardRef } from 'react'
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -9,6 +10,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   loading?: boolean
   children: React.ReactNode
   asChild?: boolean
+  href?: string
 }
 
 const buttonVariants = {
@@ -35,38 +37,41 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       children,
       type = 'button',
+      href,
       ...props
     },
     ref
   ) => {
     const isDisabled = disabled || loading
 
+    const sharedClasses = cn(
+      'relative inline-flex items-center justify-center rounded-lg',
+      'font-medium transition-all duration-200 ease-in-out',
+      'focus:outline-none focus:ring-2 focus:ring-offset-2',
+      'active:scale-95 transform',
+      buttonVariants.variant[variant],
+      buttonVariants.size[size],
+      isDisabled && 'opacity-50 cursor-not-allowed pointer-events-none',
+      loading && 'cursor-wait',
+      className
+    )
+
+    if (href) {
+      return (
+        <Link href={href} className={sharedClasses}>
+          <span className="flex items-center justify-center gap-2">
+            {children}
+          </span>
+        </Link>
+      )
+    }
+
     return (
       <button
         ref={ref}
         type={type}
         disabled={isDisabled}
-        className={cn(
-          // Base styles
-          'relative inline-flex items-center justify-center rounded-lg',
-          'font-medium transition-all duration-200 ease-in-out',
-          'focus:outline-none focus:ring-2 focus:ring-offset-2',
-          'active:scale-95 transform',
-          
-          // Variant styles
-          buttonVariants.variant[variant],
-          
-          // Size styles
-          buttonVariants.size[size],
-          
-          // Disabled styles
-          isDisabled && 'opacity-50 cursor-not-allowed pointer-events-none',
-          
-          // Loading styles
-          loading && 'cursor-wait',
-          
-          className
-        )}
+        className={sharedClasses}
         aria-disabled={isDisabled}
         aria-busy={loading}
         {...props}
